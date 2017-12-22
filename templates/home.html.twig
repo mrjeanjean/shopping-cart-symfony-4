@@ -1,0 +1,22 @@
+{% extends "layout.twig" %}
+
+{% block template %}
+    <ul class="row meals-list">
+        {% for meal in meals %}
+            <li class="col s12 m4">
+                <a href="{{ url('meal', {id:meal['Id']}) }}">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="{{ asset("images/meals/" ~ meal['Photo']) }}">
+                            <span class="card-title"></span>
+                        </div>
+                        <div class="card-action">
+                            <p class="grey-text text-darken-2"><strong>{{ meal['Name'] }}</strong> {{ meal['SalePrice']|number_format(2) }} €</p>
+                        </div>
+                    </div>
+                </a>
+                <a class="btn-floating halfway-fab waves-effect waves-light red" href="{{ url('add-meal-fast', {meal_id: meal['Id'], quantity:1}) }}"><i class="material-icons">add</i></a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

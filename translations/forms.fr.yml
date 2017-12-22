@@ -1,0 +1,12 @@
+firstname: Prénom
+lastname: Nom
+address_add: Complément d'adresse
+address: Adresse
+zip:  Code postal
+city: Ville
+email: Email
+password: Mot de passe
+password_confirm: Confirmation mot de passe
+quantity: Quantité
+buy_this: Acheter ce truc
+baseline: Faites votre choix parmi une multitude de produits gras et/ou sucrés.

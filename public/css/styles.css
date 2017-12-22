@@ -1,0 +1,342 @@
+.caption {
+    font-size: 1.25rem;
+    font-weight: 300;
+    margin-bottom: 4rem;
+}
+
+a {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.header-top{
+    text-align: center;
+}
+
+.header-top > a{
+    display: inline-block;
+    text-align: center;
+}
+
+.header-top .header{
+    display: inline-block;
+}
+.header {
+    margin-bottom: 3rem;
+    font-size: 60px;
+    font-family: 'Caveat Brush', cursive;
+}
+
+.header span,
+.header img{
+    transition: all 0.2s;
+    display: inline-block;
+}
+
+.header:hover span {
+    transform: scale(1.4) translateY(0px) translateX(-30px);
+    color:#F44336;
+
+}
+
+.header:hover img {
+    transform: scale(0);
+}
+
+.header img {
+    vertical-align: bottom;
+    transition: transform 0.2s;
+}
+
+.header + .caption {
+    margin-top: -2rem;
+}
+
+.meals-list .card .card-image {
+    height: 180px;
+    overflow: hidden;
+}
+
+.meals-list .card .card-image img {
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 100%;
+    height: auto;
+    transform: translateY(-50%);
+}
+
+.meals-list .card {
+    transition: 0.2s all;
+}
+
+.meals-list li{
+    position: relative;
+}
+
+.meals-list li > a.btn-floating{
+    position: absolute;
+    z-index: 5;
+}
+
+.meals-list a:hover .card {
+    transform: scale(1.15);
+    z-index: 2;
+    opacity: 1;
+}
+
+.meals-list a:hover img {
+    display: block;
+    /*transform: scale(1.1) translateY(-50%) !important;
+    transition: transform 4s;*/
+}
+
+.meals-list a:hover + .btn-floating.halfway-fab {
+    transform: scale(1.4);
+    transition: transform 0.2s;
+}
+
+.card.horizontal .card-image {
+    width: 450px;
+}
+
+.card.horizontal .card-image img {
+    width: 100%;
+}
+
+.btn-floating.halfway-fab {
+    top: 165px;
+    bottom: auto;
+}
+
+.card-action {
+    text-align: right;
+}
+
+.card-action p {
+    text-align: left;
+}
+
+.card input[type=number] {
+    margin-bottom: 0;
+    margin-top: 5px;
+    text-align: right;
+    border: 1px solid #9c9c9c;
+}
+
+.card .input-field button {
+    width: 100%;
+    display: block;
+}
+
+.card input[type=number]:focus {
+    border: 1px solid #565656 !important;
+    box-shadow: none !important;
+}
+
+.quantity {
+    margin-top: 2em;
+}
+
+.header .material-icons {
+    display: block;
+    font-size: 60px;
+}
+
+.chip {
+    width: 100%;
+    display: block;
+    height: 55px;
+    line-height: 55px;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.chip .close {
+    line-height: 55px;
+}
+
+.cart-table tbody {
+    border-bottom: 1px solid #d0d0d0;
+}
+
+.cart-table td {
+    padding: 0;
+}
+
+.cart-table td img {
+    display: block;
+}
+
+.cart-table .table-col-name {
+    text-align: left;
+    padding-left: 1em;
+    font-weight: 600;
+}
+
+.cart-table .table-col-image {
+    width: 250px;
+    text-align: left;
+}
+
+.cart-table .table-col-quantity,
+.cart-table .table-col-price {
+    width: 250px;
+    text-align: center;
+}
+
+.cart-table td{
+    position: relative;
+}
+
+.cart-table .btn-floating{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(50%, -50%);
+}
+
+.cart-total .table-col-price{
+    width: 250px;
+    text-align: center;
+}
+
+.btn-vaidation {
+    width: 250px;
+    margin-top: 2em;
+}
+
+.mini-cart{
+    background-color: #dbdbdb;
+    display: block;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    border-radius:50%;
+    line-height: 70px;
+    position: fixed;
+    top: 25px;
+    right: 25px;
+}
+
+.mini-cart span.counter{
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #F44336;
+    padding: 0 5px;
+    height: 15px;
+    line-height: 15px;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 10px;
+}
+
+.mini-cart .products{
+    max-height:0;
+    overflow: hidden;
+    position: absolute;
+    z-index: 60;
+    background-color: #dbdbdb;
+    width: 250px;
+    line-height: 1;
+    text-align: left;
+    right: 100%;
+    margin-right: 15px;
+    top: -15px;
+    transition: max-height 1.2s, opacity 0.4s;
+    opacity: 0.0;
+
+}
+
+.mini-cart .products li:nth-child(even){
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.mini-cart:hover .products{
+    max-height:450px;
+    opacity: 1.0;
+}
+
+.mini-cart .products li{
+    font-size:13px;
+}
+
+.mini-cart .products li img{
+    display: inline-block;
+    max-width: 60px;
+    height: auto;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.mini-cart .products li.total{
+    background-color:  #F44336;
+    padding: 10px;
+    color: #fff;
+    text-align: right;
+}
+
+.mini-cart .products li.total span{
+    float: left;
+}
+
+#toast-container {
+    top: auto !important;
+    right: auto !important;
+    bottom: 5%;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+#toast-container .toast{
+    background-color: #757575;
+    float: none;
+    text-align: center;
+    justify-content: center;
+}
+
+.input-field .errors{
+    display: none;
+}
+
+.errors, ul.errors:not(.browser-default){
+    background-color: #F44336;
+    padding: 1em;
+    margin-bottom: 2.5em;
+}
+
+.errors li{
+    color: #ffffff;
+}
+
+.error-field{
+    padding-left: 2.2em;
+}
+
+.error-field:before{
+    content:"- ";
+}
+
+.errors li .material-icons{
+    display: inline-block;
+    vertical-align: bottom;
+    margin-right: 5px;
+}
+
+
+.input-field input.invalid + label:not(.label-icon) {
+    font-size: 0.8rem;
+    -webkit-transform: translateY(-140%);
+    transform: translateY(-140%);
+    display: block;
+    width: 100%;
+}
+
+.input-field input.invalid + label:not(.label-icon):after{
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 80%;
+}

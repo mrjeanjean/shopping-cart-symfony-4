@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurant - {% block title %}Bienvenue au restaurant{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    {% block css %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
+        <link href="https://fonts.googleapis.com/css?family=Caveat+Brush" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    {% endblock %}
+</head>
+<body>
+<div class="section no-pad-bot " id="index-banner">
+    {% block minicart %}
+        {{ render(controller('App\\Controller\\CartController::miniCart')) }}
+    {% endblock %}
+    <div class="header-top">
+        <a href="{{ url('homepage') }}">
+            <h2 class="header center grey-text text-darken-1">
+                <img src="{{ asset("images/burger-icon.png") }}" alt=""> <span>Resto'Gro</span>
+            </h2>
+            <p class="center caption">{{ 'baseline'|trans() }}</p>
+        </a>
+    </div>
+    <div class="fixed-action-btn  click-to-toggle">
+        <a class="btn-floating btn-large red"> <i class="material-icons">menu</i> </a>
+        <ul>
+            <li><a class="btn-floating grey" href="{{ url('homepage') }}"><i class="material-icons">store</i></a></li>
+            <li><a class="btn-floating grey" href="{{ url('cart') }}"><i class="material-icons">shopping_cart</i></a>
+            </li>
+            <li><a class="btn-floating grey" href="{{ url('order') }}"><i class="material-icons">receipt</i></a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            {% block template %}{% endblock %}
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+
+{% block flashbags %}
+    <script>
+        {% for message in app.session.getFlashBag.get('message') %}
+        Materialize.toast("{{ message }}", 5000, 'rounded');
+        {% endfor %}
+    </script>
+{% endblock %}
+
+</body>
+</html>
+
+

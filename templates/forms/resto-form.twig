@@ -1,0 +1,78 @@
+{% block form_widget_simple %}
+    {% set type = type|default('text') %}
+    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+{% endblock form_widget_simple %}
+
+{% block form_errors %}
+    {% spaceless %}
+        {% if errors|length > 0 %}
+            <ul class="errors">
+                {% for error in errors %}
+                    <li><i class="material-icons">error_outline</i>
+                        {{ error.messageTemplate|trans(error.messageParameters, 'validators') }}
+                    </li>
+                {% endfor %}
+
+            {#{% for children in form.children %}
+                    {% if children.vars.errors|length > 0 %}
+                        {% for error in children.vars.errors %}
+                            <li class="error-field">
+                                {{ children.vars.label }}
+                                : {{ error.messageTemplate|trans(error.messageParameters, 'validators') }}
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}#}
+            </ul>
+        {% endif %}
+    {% endspaceless %}
+{% endblock form_errors %}
+
+{% block widget_attributes %}
+    {% if errors|length > 0 %} class="invalid" {% endif %}
+    id="{{ id }}" name="{{ full_name }}"
+    {% if disabled %} disabled="disabled"{% endif %}
+    {% if required %} required="required"{% endif %}
+    {{ block('attributes') }}
+{% endblock widget_attributes %}
+
+{% block form_label %}
+    {% if not compound %}
+        {% set label_attr = label_attr|merge({'for': id}) %}
+    {% endif %}
+
+    {% if required %}
+        {% set label_attr = label_attr|merge({
+        'class': (label_attr.class|default('') ~ ' required')
+        }) %}
+    {% endif %}
+
+    {% if errors|length > 0 %}
+        {% set label_attr = label_attr|merge({
+        'data-error': (label_attr.wrong|default('') ~ errors[0].message)
+        }) %}
+    {% endif %}
+
+    {% if label is empty %}
+        {% set label = name %}
+    {% endif %}
+
+
+
+    <label
+    {% for attrname, attrvalue in label_attr -%}
+        {{ attrname }}="{{ attrvalue }}"
+    {%- endfor %}
+    >
+    {{ label|trans({}, 'forms') }}{% if required %}*{% endif %}
+    </label>
+{% endblock form_label %}
+
+{%- block form_row -%}
+    <div>
+        {{- form_widget(form) -}}
+        {{- form_label(form) -}}
+        {{- form_errors(form) -}}
+    </div>
+{%- endblock form_row -%}
+

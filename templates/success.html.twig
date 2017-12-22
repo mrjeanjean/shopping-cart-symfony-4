@@ -1,0 +1,8 @@
+{% extends 'layout.twig' %}
+{% block template %}
+    <h4 class="center-align">{{ 'thanks' |trans() }}</h4>
+    <p class="center-align">{{ 'delivery_delay' |trans({"%time%":30}) }}</p>
+    <p class="center-align">
+        <img src="{{  asset("/images/delivery.jpg") }}">
+    </p>
+{% endblock %}

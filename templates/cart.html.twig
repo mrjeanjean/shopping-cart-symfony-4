@@ -1,0 +1,54 @@
+{% extends "layout.twig" %}
+{% block template %}
+    <table class="striped cart-table">
+        <thead>
+        <tr>
+            <th class="table-col-image">{{ 'meal'|trans() }}</th>
+            <th></th>
+            <th class="table-col-price">{{ 'price'|trans() }}</th>
+            <th class="table-col-quantity">{{ 'quantity'|trans() }}</th>
+            <th class="table-col-price">{{ 'total'|trans() }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for id, item in meals %}
+            {% set meal = item.meal %}
+            <tr>
+                <td class="table-col-image"><img src="{{ "images/meals/" ~ asset(meal.getImage()) }}" alt="{{ meal.getName() }}">
+                </td>
+                <td class="table-col-name">{{ meal.getName() }}</td>
+                <td class="table-col-price">{{ item.price |number_format(2) }} €</td>
+                <td class="table-col-quantity">{{ item.quantity }}</td>
+                <td class="table-col-price">
+                    {{ (item.price *  item.quantity)|number_format(2) }} €
+                    <a href="{{ url('remove-meal', { meal_id: id }) }}" class="btn-floating waves-effect waves-light grey"><i class="material-icons">close</i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col s6 offset-s6 ">
+            <table class="bordered right-align cart-total">
+                <tr>
+                    <td class="right-align"><strong>{{ 'total_ht'|trans() }}</strong></td>
+                    <td class="right-align table-col-price">{{ total|number_format(2) }}€</td>
+                </tr>
+                <tr>
+                    <td class="right-align"><strong>{{ 'tva'|trans({"%percent%":20}) }}</strong></td>
+                    <td class="right-align table-col-price">{{  tax|number_format(2)  }}€</td>
+                </tr>
+                <tr>
+                    <td class="right-align"><strong>{{ 'total_ttc'|trans() }}</strong></td>
+                    <td class="right-align table-col-price">{{  (total + tax)|number_format(2)  }}€</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 right-align">
+            <a href="{{ url("order") }}" class="btn-large red waves-effect waves-light btn-vaidation">{{ 'order'|trans() }}</a>
+        </div>
+    </div>
+
+{% endblock %}

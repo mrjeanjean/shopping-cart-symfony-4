@@ -1,0 +1,17 @@
+<a href="{{ url('cart') }}" class="mini-cart">
+    <i class="material-icons">shopping_cart</i>
+
+    <span class="counter">{{ products_number }}</span>
+    {% if products|length > 0 %}
+    <ul class="products">
+        {%  for product in products %}
+            <li>
+                <img src="{{ asset('images/meals/' ~ product.meal.image) }}" alt="">
+                {{ product.meal.name }}
+                x{{ product.quantity }}
+            </li>
+        {% endfor %}
+        <li class="total"><span>{{ 'total'|trans() }} :</span><strong>{{ total|number_format(2) }} €</strong></li>
+    </ul>
+    {% endif %}
+</a>

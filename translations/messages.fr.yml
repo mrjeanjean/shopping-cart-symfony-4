@@ -1,0 +1,15 @@
+baseline: Faites votre choix parmi une multitude de produits gras et/ou sucrés.
+meal: Plat
+price: Prix
+quantity: Quantité
+total: Total
+order: Commander
+total_ht: Total HT
+tva: TVA %percent%%
+total_ttc: Total TTC
+checkout: Récapitulatif commande
+contact_details: Coordonnées
+sign_in: Création de compte
+pay: Payer
+thanks: Merci, votre paiement a bien été pris en compte
+delivery_delay: Votre commande sera livrée dans %time% minutes environ.

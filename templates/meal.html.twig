@@ -1,0 +1,36 @@
+{% extends "layout.twig" %}
+{% form_theme form 'forms/resto-form.twig' %}
+{% block template %}
+
+    <form action="{{ url('meal', {id:meal.getId()}) }}" method="POST">
+        {{ form_errors(form) }}
+        <div class="col s12">
+            <div class="card horizontal">
+                <div class="card-image">
+                    <img src="{{ asset("images/meals/" ~ meal.getImage() ) }}">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h4 class="grey-text text-darken-1">{{ meal.getName() }}</h4>
+                        <p>{{ meal.getDescription() }}</p>
+                    </div>
+                    <div class="card-action">
+                        <div class="row">
+                            <div class="col s3 quantity offset-s2"><strong>{{ 'quantity'|trans({}, 'forms') }}</strong>
+                            </div>
+                            <div class="input-field col s3">
+                                {{ form(form.quantity) }}
+                            </div>
+                            <div class="input-field col s4">
+                                {{ form_widget(form.meal_id) }}
+                                <button type="submit" class="btn-large red waves-effect waves-light">
+                                    {{ 'buy_this'|trans({}, 'forms') }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
